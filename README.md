@@ -1,5 +1,6 @@
+# SearchBar-Suggestion-Endpoin
 
-# Run Locally
+## Run Locally
 
 Clone the project
 
@@ -28,6 +29,6 @@ Start the server
 
 
 
-# SearchBar-Suggestion-Endpoin
+## Screenshots
 
 <img src="/search-bar/static/images/search.png"></img>
