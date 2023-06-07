@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Bar Suggestion</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('form').on('submit', function (event) {
+                event.preventDefault();
+                var query = $('#query').val();
+                $.ajax({
+                    type: 'POST',
+                    url: '/suggest',
+                    data: {query: query},
+                    success: function (response) {
+                        var suggestions = response.suggestions;
+                        var suggestionList = '';
+                        for (var i = 0; i < suggestions.length; i++) {
+                            suggestionList += '<li>' + suggestions[i] + '</li>';
+                        }
+                        $('#suggestionList').html(suggestionList);
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <form>
+        <input type="text" id="query" name="query" placeholder="Search...">
+        <input type="submit" value="Search">
+    </form>
+    <ul id="suggestionList"></ul>
+</body>
+</html>
